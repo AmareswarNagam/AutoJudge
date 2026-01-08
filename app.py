@@ -81,6 +81,8 @@ if st.button("Predict Difficulty"):
     # predictions
     predicted_class = classifier.predict(final_vector)[0]
     predicted_score = regressor.predict(final_vector)[0]
+    # prediction score was clipped to range between 0 and 10
+    predicted_score = np.clip(predicted_score, 0, 10)
 
     # display results
     st.success(f"Predicted Difficulty Class: **{predicted_class}**")
